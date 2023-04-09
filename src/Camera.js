@@ -10,7 +10,7 @@ const Camera = () => {
   const webcamRef = useRef(null);
   const [url, setUrl] = React.useState(null);
 
-  const capturePhoto = React.useCallback(async () => {
+  const capture = React.useCallback(async () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setUrl(imageSrc);
   }, [webcamRef]);
@@ -27,7 +27,7 @@ const Camera = () => {
         videoConstraints={videoConstraints}
         onUserMedia={onUserMedia}
       />
-      <button onClick={capturePhoto}>Capture</button>
+      <button onClick={capture}>Capture</button>
       <button onClick={() => setUrl(null)}>Refresh</button>
       {url && (
         <div>
